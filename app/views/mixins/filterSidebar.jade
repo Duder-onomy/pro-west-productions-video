@@ -1,0 +1,42 @@
+mixin filterSidebar(filterBy, heading, landingPage, currentFiltersObject)
+    aside.sidebar
+        if heading
+            h4
+                strong #{heading}
+        if filterBy
+            each filterDefined, filterTitle in filterBy
+                if filterDefined && ! _.isEmpty(filterBy[filterTitle])
+                    - var capitalizedTitle = filterTitle[0].toUpperCase() + filterTitle.slice(1)
+                    if !(landingPage.slug === 'news-events' && filterTitle === 'category')
+                        if heading
+                            strong!= capitalizedTitle
+                        else
+                            h4!= capitalizedTitle
+                    ul.nav.nav-list.primary.push-bottom
+                        if filterTitle === 'category' || filterTitle === 'year'
+                            li
+                                a(href='/#{feed}' class='#{!!currentFiltersObject[filterTitle] ? "" : "active"}') All
+                        else
+                            a(href='/#{feed}')
+                                if currentFiltersObject[filterTitle]
+                                    | All
+                                else
+                                    strong All
+                            | ,&nbsp;
+                        - listLength = filterBy[filterTitle].length
+                        each filter, index in filterBy[filterTitle]
+                            if filterTitle === 'category'
+                                li
+                                    a(href='/#{feed}/#{filterTitle}/#{filter}' class='#{filter === currentFiltersObject.category ? "active" : ""}')!= filter
+                            if filterTitle === 'tag'
+                                a(href='/#{feed}/#{filterTitle}/#{filter}')
+                                    if filter === currentFiltersObject.tag
+                                        strong!= filter
+                                    else
+                                        != filter
+                                if index < listLength - 1
+                                    | ,&nbsp;
+                            if filterTitle === 'year'
+                                li
+                                    - ;// Double equals for casting year num to string
+                                    a(href='/#{feed}/#{filterTitle}/#{filter}' class='#{filter == currentFiltersObject.year ? "active" : ""}')!= filter

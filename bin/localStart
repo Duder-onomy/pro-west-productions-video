@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+#set -x # for debugging
+
+NODE_ENV="local-remote"
+DEBUG=""
+NODE_DEBUG=""
+WAIT=10
+DEBUG_WAIT=20
+
+    while test $# -gt 0; do
+        case "$1" in
+            -h|--help)
+                echo "Start the node server using nodemon"
+                echo " "
+                echo "The default environment is 'local' if no flags are passed."
+                echo " "
+                echo "options:"
+                echo "-h| --help        show help"
+                echo "-d|--debug        start with --debug flag"
+                echo "-n|--node-debug   start with node debug"
+                echo "                      local code, staging data"
+                exit 0
+                ;;
+            -d|--debug)
+                shift
+                WAIT="$DEBUG_WAIT"
+                DEBUG="debug"
+                ;;
+            -n|node-debug)
+                shift
+                NODE_DEBUG=true
+                DEBUG="debug"
+                ;;
+            *)
+                break
+                ;;
+        esac
+    done
+
+bower install
+echo "openning ssh tunnel to remote data"
+echo "$WAIT seconds to connect mongo"
+echo "if you want nodemon to work, open a new tab and run, './bin/keepAlive -l'"
+# https://gist.github.com/scy/6781836
+ssh -f -o ExitOnForwardFailure=yes -L 27018:localhost:27017 ts@staging-ssh.cambiumnetworks.com sleep "$WAIT"
+
+
+
+if [ -z "$DEBUG" ]
+then
+    if ! command -v nodemon >/dev/null 2>&1
+    then
+        npm install -g nodemon
+    fi
+    NODE_ENV="$NODE_ENV" nodemon app
+else
+    if [ -n "$NODE_DEBUG" ]
+    then
+        NODE_ENV="$NODE_ENV" node-debug app
+    else
+        NODE_ENV="$NODE_ENV" node --debug app
+    fi
+fi

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+echo  "This will drop the cambium DB before importing the new data."
+read -sn 1 -p "Press enter twice to continue or Ctr-C"
+vagrant exec "mongo cambium --eval 'printjson(db.dropDatabase())'"
+vagrant exec 'mongorestore --db cambium /home/vagrant/project_name/db/project_name -u some-user -p "some_password"'

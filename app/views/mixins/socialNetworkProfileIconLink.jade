@@ -1,0 +1,4 @@
+mixin socialNetworkProfileIconLink(profile)
+    a(data-tooltip='', data-placement='bottom', target='_blank', href='#{profile.profileUrl}', data-original-title='#{profile.socialNetworkName}')
+        i.fa(class="fa-#{profile.socialNetworkName.toLowerCase()}")
+        span!= profile.socialNetworkName

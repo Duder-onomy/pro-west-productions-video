@@ -1,0 +1,13 @@
+{
+    "verbose": true,
+    "ignore": [
+      ".git/*",
+      ".idea/*",
+      ".vagrant/*",
+      "app/views/*",
+      "app/public/*",
+      "app/tmp/*",
+      "ansible/*",
+      "node_modules/*"
+    ]
+}

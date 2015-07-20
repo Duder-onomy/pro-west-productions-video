@@ -53,6 +53,7 @@ Vagrant.configure("2") do |config|
   config.vm.network :forwarded_port, guest: 80, host: 8080, auto_correct: true
   config.vm.network :forwarded_port, guest: 3306, host: 8306, auto_correct: true
 
+  # this ip is also in /bin/addHosts
   config.vm.network "private_network", ip: "192.168.99.99"
   # Share this directory on host with guest
   # config.vm.synced_folder "./", "/var/www/vhosts/example/source", nfs: true

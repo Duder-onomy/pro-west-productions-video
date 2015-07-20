@@ -1,0 +1,28 @@
+include ./postDate
+include ./imageCarousel
+
+mixin newsEventsBlurb(post, postIndex)
+    if post.fields
+        - var postUrl = post.fields.externalUrl || '/' + feed + '/' + post.fields.slug
+        article.post.post-large(id="post-#{postIndex}")
+            if post.fields.headerImages
+                .post-image.single
+                    +imageCarousel(post.fields.headerImages)
+            // displayDate set to end date for training and events in the getPostsWithMeaningfulEndDate middleware, else left as start date
+            +postDate(post.fields.editorialWindow.displayDate)
+            .post-content
+                h2
+                    a(href='#{postUrl}')!= post.fields.title
+                p!= post.fields.contentLead
+                .post-meta
+                    if post.fields.categories
+                        span
+                            | Category:&nbsp;
+                            each categorySlug in post.fields.categories
+                                a(href='/#{post.fields.feed}/category/#{categorySlug}')!= categorySlug
+                                | &nbsp;
+                    span
+                        i.fa.fa-comments
+                        | Comments
+                        span.comment-count.hidden
+                    a.btn.btn-xs.btn-primary.pull-right(href='#{postUrl}') Read more...

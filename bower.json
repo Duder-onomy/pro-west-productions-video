@@ -1,0 +1,11 @@
+{
+  "name": "some_project",
+  "dependencies": {
+    "bootstrap": "~3.3.4",
+    "fontawesome": "~4.3.0",
+    "modernizr": "~2.8.3",
+    "jquery": "~2.1.4",
+    "lodash": "~3.10.0"
+  },
+  "devDependencies": {}
+}

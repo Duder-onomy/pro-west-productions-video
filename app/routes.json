@@ -1,0 +1,89 @@
+[
+  [ "stack",
+    "addParts",
+    ["addCache", "addLodash", "addAssetBase", "addHeader", "addFooter", "addScripts"]],
+
+  [ "use",
+    "/api/v1",
+    ["removeCache", "grasshopper"]],
+
+  [ "GET",
+    "/api/comment-count/:blogPostSlug",
+    ["removeCache", "api_commentCount"]],
+
+  [ "GET",
+    "/admin*?",
+    ["addCache", "admin"]],
+
+  [ "GET",
+    "/",
+    ["addParts", "home", "notFound"]],
+
+  [ "GET",
+    "/about/executive-team/:name",
+    ["addParts", "teamMember", "notFound"]],
+
+  [ "GET",
+    "/about/executive-team",
+    ["addParts", "team", "notFound"]],
+
+  [ "GET",
+    "/resources/:resource",
+    ["addParts", "resource", "notFound"]],
+
+  [ "GET",
+    "/resources",
+    ["addParts", "resources", "notFound"]],
+
+  [ "GET",
+    "/news-events",
+    ["addParts", "news-events", "notFound"]],
+
+  [ "GET",
+    "/news-events(/category/:category)?(/year/:year)?(/page/:pageNumber)?",
+    ["addParts", "calendarList"]],
+
+  [ "GET",
+    "/news-events/:postTitle",
+    ["addParts", "calendarListItem"]],
+
+  [ "GET",
+    "/training(/category/:category)?(/region/:region)?(/product/:product)?(/page/:pageNumber)?",
+    ["addParts", "calendarList"]],
+
+  [ "GET",
+    "/training/:postTitle",
+    ["addParts", "calendarListItem"]],
+
+  [ "GET",
+    "/blog(/category/:category)?(/tag/:tag)?(/year/:year)?(/page/:pageNumber)?",
+    ["addParts", "calendarList"]],
+
+  [ "GET",
+    "/blog/:postTitle",
+    ["addParts", "calendarListItem"]],
+
+  [ "GET",
+    "/:category/:subcategory/:product",
+    ["addParts", "product"]],
+
+  [ "GET",
+    "/:category/:subcategory",
+    ["addParts", "subcategory"]],
+
+  [ "GET",
+    "/:category",
+    ["addParts", "category"]],
+
+  [ "GET",
+    "*",
+    ["addParts", "form"]],
+
+  [ "GET",
+    "*",
+    ["addParts", "formSplit"]],
+
+  [ "GET",
+    "*",
+    ["addParts", "notFound"]]
+]

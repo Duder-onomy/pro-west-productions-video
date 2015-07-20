@@ -1,0 +1,15 @@
+{
+  "logger" : [
+    {
+      "type" : "file",
+      "path" : "<%= homeDirectory %>/logs/project_name-app.log",
+      "application" : "project_name",
+      "machine" : "dev"
+    },
+    {
+      "type" : "console",
+      "application" : "project_name",
+      "machine" : "dev"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+rm -r db
+vagrant exec 'mongodump --db project_name -o /home/vagrant/project_name/db -u some-user -p "some_password"'

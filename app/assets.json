@@ -1,0 +1,30 @@
+{
+  "css" : {
+    "cambium" : [
+      "/css/theme.css",
+      "/css/theme-elements.css",
+      "/css/theme-blog.css",
+      "/css/theme-shop.css",
+      "/css/theme-animate.css",
+      "/css/skins/default.css",
+      "/css/custom.css"
+    ],
+    "vendor" : [
+      "/vendor/fontawesome/css/font-awesome.min.css",
+      "/vendor/bootstrap/dist/css/bootstrap.min.css"
+    ]
+  },
+  "js" : {
+    "cambium" : [
+      "/js/theme.js",
+      "/js/custom.js",
+      "/js/theme.init.js",
+      "/js/solid.js"
+    ],
+    "vendor" : [
+      "/vendor/jquery/dist/jquery.min.js",
+      "/vendor/lodash/lodash.min.js",
+      "/vendor/bootstrap/dist/js/bootstrap.min.js"
+    ]
+  }
+}

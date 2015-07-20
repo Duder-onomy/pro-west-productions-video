@@ -1,0 +1,103 @@
+header#header
+    .container
+        .logo
+            a(href='/')
+                img(alt='Porto', width='230', height='36', data-sticky-width='150', data-sticky-height='23', src='/assets/556e46f33596e1dd1833c775/cambium-networks-logo.png')
+        .search
+            form#searchForm.not-implemented(action='page-search-results', method='get')
+                .input-group
+                    input#q.form-control.search(type='text', name='q', placeholder='Search...', required='')
+                    span.input-group-btn
+                        button.btn.btn-default(type='submit')
+                            i.fa.fa-search
+        #google_translate_element.search
+        nav
+            ul.nav.nav-pills.nav-top
+                if header.infoLinks && header.infoLinks.links
+                    for link in header.infoLinks.links
+                        li
+                            a(href='#{link.url}')!= link.title
+        button.btn.btn-responsive-nav.btn-inverse(data-toggle='collapse', data-target='.nav-main-collapse')
+            i.fa.fa-bars
+    .navbar-collapse.nav-main-collapse.collapse
+        .container
+            nav.nav-main.mega-menu
+                ul#mainMenu.nav.nav-pills.nav-main
+                    li.dropdown.mega-menu-item.mega-menu-fullwidth
+                        a.dropdown-toggle(href='/products')
+                            | Products&nbsp;
+                            i.fa.fa-angle-down
+                        ul.dropdown-menu
+                            li
+                                .mega-menu-content
+                                    .row
+                                        .col-md-3
+                                            ul.sub-menu
+                                                li
+                                                    ul.sub-menu
+                                                        li
+                                                            a(href='/products')
+                                                                span.mega-menu-sub-title All Products
+                                                        li
+                                                            a(href='/products/accessories')
+                                                                span.mega-menu-sub-title Accessories
+                                                        li
+                                                            a(href='/products/outlet')
+                                                                span.mega-menu-sub-title Outlet
+                                                        li
+                                                            a(href='/products/discontinued')
+                                                                span.mega-menu-sub-title.gray-text Discontinued
+                                        .col-md-3
+                                            ul.sub-menu
+                                                li
+                                                    ul.sub-menu
+                                                        li
+                                                            a(href='/products/backhaul')
+                                                                span.mega-menu-sub-title Backhaul
+                                                        if header.productType.backhaulList
+                                                            each type in header.productType.backhaulList
+                                                                li
+                                                                    a(href='/products/backhaul/#{type.slug}')!= type.title
+                                        .col-md-3
+                                            ul.sub-menu
+                                                li
+                                                    ul.sub-menu
+                                                        li
+                                                            a(href='/products/access')
+                                                                span.mega-menu-sub-title Access
+                                                        if header.productType.accessList
+                                                            each type in header.productType.accessList
+                                                                li
+                                                                    a(href='/products/access/#{type.slug}')!= type.title
+                                                br
+                                                li
+                                                    ul.sub-menu
+                                                        li
+                                                            a(href='/products/wifi')
+                                                                span.mega-menu-sub-title WiFi
+                                                        if header.productType.wifiList
+                                                            each type in header.productType.wifiList
+                                                                li
+                                                                    a(href='/products/wifi/#{type.slug}')!= type.title
+                                        .col-md-3
+                                            ul.sub-menu
+                                                li
+                                                    ul.sub-menu
+                                                        li
+                                                            a(href='/products/software-tools')
+                                                                span.mega-menu-sub-title Software Tools
+                                                        if header.productType.softwareToolsList
+                                                            each type in header.productType.softwareToolsList
+                                                                li
+                                                                    a(href='/products/software-tools/#{type.slug}')!= type.title
+                    if header
+                        each category in header.categories
+                            li.dropdown
+                                a.dropdown-toggle(href='#{category.url}')!= category.title
+                                    | &nbsp;
+                                    i.fa.fa-angle-down
+                                ul.dropdown-menu
+                                    if category.subLinks
+                                        for sublink in category.subLinks
+                                            li
+                                                a(href='#{sublink.url}')!= sublink.title

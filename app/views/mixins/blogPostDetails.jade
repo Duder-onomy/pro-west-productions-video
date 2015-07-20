@@ -1,0 +1,38 @@
+mixin blogPostDetails(authors, tags)
+    span
+        if authors
+            if authors.length > 1
+                i.fa.fa-users
+                | &nbsp;By&nbsp;
+                each author in authors
+                    if author.teamMember
+                        a(href='/about/executive-team/#{author.slug}')
+                            != author.displayName
+                            | ,&nbsp;
+                        | ,&nbsp;
+                        != author.title
+                    else 
+                        != author.displayName
+                        | ,&nbsp;
+            else
+                i.fa.fa-user
+                | &nbsp;By&nbsp;
+                if authors[0].teamMember
+                    a(href='/about/executive-team/#{authors[0].slug}')!= authors[0].displayName
+                    | ,&nbsp;
+                    != authors[0].title
+                else
+                    != authors[0].displayName
+        else
+            i.fa.fa-users
+            | &nbsp;By Cambium Networks &nbsp;
+    if tags
+        span
+            i.fa.fa-tag
+            each tag in tags
+                a(href='/blog/tag/#{tag}')!= tag
+                | ,&nbsp;
+    span
+        i.fa.fa-comments 
+        | Comments 
+        span.comment-count.hidden

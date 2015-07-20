@@ -1,0 +1,9 @@
+{
+  "assets"        : "/home/ubuntu/project_name/public/assets",
+  "baseAssetsUrl" : "http://project_name.thinksolid.com",
+  "homeDirectory" : "/home/ubunut",
+  "dbEndpoint"    : "mongodb://127.0.0.1:27017/project_name",
+  "dbHost"        : "127.0.0.1:27017/project_name",
+  "debug"         : false,
+  "optimize"      : true
+}

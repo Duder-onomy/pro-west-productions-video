@@ -1,0 +1,21 @@
+include ./specThumbnail
+
+mixin productThumbnail(product, subcategory)
+    if product.fields
+        li.col-md-3.col-sm-6.col-xs-12
+            .products-item.thumbnail
+                - var productTitle = product.fields.title
+                - var productUrl = ('/' + category + '/' + subcategory + '/' + product.fields.slug).toLowerCase()
+                a.thumb-info(href='#{productUrl}')
+                    if product.fields.titleImage
+                        img.fixed-aspect-ratio(alt='#{productTitle}' src='#{assetBase}#{product.fields.titleImage}', width="300" height="300")
+                    else
+                        img.fixed-aspect-ratio(width="300" height="300")
+                span.thumb-info-caption
+                    h3
+                        a(href='#{productUrl}')!= productTitle
+                    p.product-thumbnail-subtitle!= product.fields.subtitle
+                    span.thumb-info-specs
+                        if product.fields.platformSpecs
+                            each spec in product.fields.platformSpecs
+                                +specThumbnail(spec)

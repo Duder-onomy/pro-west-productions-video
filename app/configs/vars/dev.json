@@ -1,0 +1,9 @@
+{
+  "assets"        : "/home/vagrant/project_name/app/public/assets",
+  "baseAssetsUrl" : "http://staging.project_name.com",
+  "homeDirectory" : "/home/vagrant",
+  "dbEndpoint"    : "mongodb://127.0.0.1:27017/project_name",
+  "dbHost"        : "127.0.0.1:27017/project_name",
+  "debug"         : true,
+  "optimize"      : false
+}

@@ -1,0 +1,13 @@
+doctype html
+html
+    head
+        include parts/head.jade
+        block head
+    body
+        .body
+            include parts/header.jade
+            .main(role='main')
+                block content
+            include parts/footer.jade
+        include parts/scripts.jade
+        block scripts

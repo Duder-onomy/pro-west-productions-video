@@ -1,0 +1,42 @@
+mixin subcategoryMainContent(subcategory)
+    if subcategory.image && !subcategory.hideImage
+        p
+            img(src="#{subcategory.assetBase}#{subcategory.image}")
+    .lead!= subcategory.shortDescription
+    if subcategory.fullDescription
+        section!= subcategory.fullDescription
+    if subcategory.imageCarouselVideoRichText
+        each content, index in subcategory.imageCarouselVideoRichText
+            if content.images
+                hr.tall
+                if content.displayTitle
+                    h2!= content.title
+                +imageCarousel(content.images)
+            if content.videoCode
+                hr.tall
+                if content.displayTitle
+                    h2!= content.title
+                +videoPlayer(content.videoCode)
+            if content.richText
+                hr.tall
+                if content.displayTitle
+                    h2!= content.title
+                != content.richText
+    if table
+        hr.tall
+        .col-md-12
+            .row
+                h2!= subcategory.table.title
+                .table-responsive
+                    table.table.table-bordered.table-striped.table-condensed.mb-none
+                        if subcategory.table.headings
+                            thead
+                                tr
+                                    each element in subcategory.table.headings.elements
+                                        th!= element
+                        if subcategory.table.rows
+                            tbody
+                                each row in table.rows
+                                    tr
+                                        each element in row.elements
+                                            td!= element

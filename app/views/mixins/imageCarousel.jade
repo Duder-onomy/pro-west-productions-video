@@ -1,0 +1,5 @@
+mixin imageCarousel(images)
+    .owl-carousel(data-plugin-options='{"items": 1}')
+        each image in images
+            div
+                img.img-responsive(src='#{assetBase}#{image}')

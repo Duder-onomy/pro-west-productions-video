@@ -1,0 +1,30 @@
+mixin carousel-item
+    - active = attributes['active']
+    - src = attributes['src']
+    .item(class=active)
+        img.background-image(src=src)
+        .containter
+            .carousel-caption
+                block
+
+mixin carousel
+    - attributes['data-ride'] = attributes['data-ride'] = 'carousel'
+    - count = attributes.count
+    - attributes.count = null
+    .carousel.slide()&attributes(attributes)
+        ol.carousel-indicators
+            - for (var i = 0; i < count; ++i) {
+                li(
+                class=i == 0 ? 'active' : '',
+                data-slide-to=i.toString(),
+                data-target='#' + attributes.id
+                )
+            - }
+        .carousel-inner(role='listbox')
+            block
+        a.left.carousel-control(href='#revolutionSlider', role='button', data-slide='prev')
+            span.fa.fa-chevron-left(aria-hidden='true')
+            span.sr-only Previous
+        a.right.carousel-control(href='#revolutionSlider', role='button', data-slide='next')
+            span.fa.fa-chevron-right(aria-hidden='true')
+            span.sr-only Next

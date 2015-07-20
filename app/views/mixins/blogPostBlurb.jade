@@ -1,0 +1,33 @@
+include ./imageCarousel
+include ./blogPostDetails
+
+mixin blogPostBlurb(post, postIndex)
+    if post.fields
+        - var postUrl = '/' + feed + '/' + post.fields.slug
+        article.post.post-medium(id="post-#{postIndex}")
+            .row
+                if post.fields.listImages
+                    .col-md-5
+                        .post-image
+                            +imageCarousel(post.fields.listImages)
+                    .col-md-7
+                        .post-content
+                            h2
+                                a(href='#{postUrl}')!= post.fields.title
+                            p!= post.fields.contentLead
+                else
+                    .col-md-12
+                        .post-content
+                            h2
+                                a(href='#{postUrl}')!= post.fields.title
+                            p!= post.fields.contentLead
+            .row
+                .col-md-12
+                    .post-meta
+                        span
+                            i.fa.fa-calendar
+                            | &nbsp;
+                            -var localeDateString = post.fields.editorialWindow.validFrom.toLocaleDateString('en-US')
+                            != localeDateString.slice(localeDateString.indexOf('day, ') + 5)
+                        +blogPostDetails(post.fields.authors, post.fields.tags)
+                        a.btn.btn-xs.btn-primary.pull-right(href='#{postUrl}') Read more...

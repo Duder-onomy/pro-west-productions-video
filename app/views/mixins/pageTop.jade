@@ -1,0 +1,17 @@
+mixin pageTop(breadcrumb)
+    section.page-top
+        .container
+            .row
+                .col-md-12
+                    ul.breadcrumb
+                        each crumb in breadcrumb
+                            if crumb.url
+                                li
+                                    a(href='#{crumb.url}')!= crumb.title
+                            else
+                                li.active!= crumb.title
+                            | &nbsp;
+            .row
+                .col-md-12
+                    - var title = _.last(breadcrumb).fullTitle || _.last(breadcrumb).title
+                    h1!= title

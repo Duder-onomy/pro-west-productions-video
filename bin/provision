@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+#set -x # for debugging
+
+    while test $# -gt 0; do
+        case "$1" in
+            -h|--help)
+                echo "Ansible provisioning"
+                echo " "
+                echo "Provisions servers via Ansible. Must be run from project root"
+                echo " "
+                echo "options:"
+                echo "-h, --help        show help"
+                echo "-s|--staging      provision staging servers"
+                echo "-p|--production   provision production servers"
+                exit 0
+                ;;
+            -s|--staging)
+                shift
+                ENVIRONMENT="staging"
+                ;;
+            -p|--production)
+                shift
+                ENVIRONMENT="production"
+                ;;
+            *)
+                break
+                ;;
+        esac
+    done
+
+ansible-playbook ansible/site.yml -l $ENVIRONMENT -i ansible/hosts --ask-sudo-pass

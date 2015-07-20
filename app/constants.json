@@ -1,0 +1,30 @@
+{
+    "grasshopper" : {
+      "accessoriesNodeId"         : "557075cb0d4eec830732b5c6",
+      "authorsNodeId"             : "55833cc2bc5e2deb0d61759b",
+      "blogLandingPageTypeId"     : "558dc4aa1bdec87020f0b753",
+      "blogPostsNodeId"           : "558341fdbc5e2deb0d6175a4",
+      "blogPostTypeId"            : "55834074bc5e2deb0d6175a3",
+      "categoryTypeId"            : "5567952aeb0d1dc610f6790a",
+      "contestsNodeId"            : "559c69aaab86085e5823e343",
+      "customScriptsId"           : "5582f1465e64f3b11e7c418e",
+      "eventsNodeId"              : "559c69b3ab86085e5823e344",
+      "executiveTeamId"           : "55a42c93eb224fa941d74392",
+      "footerId"                  : "557b8060cbf1ec953049331a",
+      "fullPageFormTypeId"        : "55a4313feb224fa941d74393",
+      "headerId"                  : "556e3da40cf3ff35189d7dff",
+      "homePageTypeId"            : "559dad193b00b6af304ab67a",
+      "imagesNodeId"              : "556e46f33596e1dd1833c775",
+      "onTourNodeId"              : "559c6f92ab86085e5823e351",
+      "peopleNodeId"              : "55833cc2bc5e2deb0d61759b",
+      "pressReleasesNodeId"       : "559c69bcab86085e5823e345",
+      "productDetailTypeId"       : "556f2cd778a490df1a6e83ca",
+      "productNodeId"             : "556f3a2c78a490df1a6e83d0",
+      "promotionsNodeId"          : "559c699cab86085e5823e342",
+      "resourceTypeId"            : "55a59b3965f7337650cf098b",
+      "splitPageFormTypeId"       : "55a748fa5fa18d7a33ef29be",
+      "subcategoryTypeId"         : "55679f10eb0d1dc610f6790d",
+      "technicalTrainingNodeId"   : "559c6f6eab86085e5823e34f",
+      "webinarsNodeId"            : "559c6f87ab86085e5823e350"
+    }
+}

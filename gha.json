@@ -1,0 +1,6 @@
+{
+    "apiEndpoint": "/api/v1",
+    "buildDirectory": "app/public/admin",
+    "base": "/admin/",
+    "homeString": "Some Project"
+}

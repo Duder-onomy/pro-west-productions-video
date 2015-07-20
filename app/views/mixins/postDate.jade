@@ -1,0 +1,6 @@
+mixin postDate(date)
+    .post-date.date
+        span.day!= date.getDate()
+        - var dateString = date.toString()
+        - var dateStringDayRemoved = dateString.slice(dateString.indexOf(' ') + 1)
+        span.month!= dateStringDayRemoved.slice(0, dateStringDayRemoved.indexOf(' '))

@@ -1,0 +1,10 @@
+#!/bin/bash -e
+
+# this ip is also in the Vagrantfile
+if grep -q "^192.168.99.99[ ]*dev.sample.com" /etc/hosts
+then
+    echo "Skipping... already added."
+else
+    printf "\n192.168.99.99 dev.sample.com" | sudo tee -a /etc/hosts
+    echo "Added dev.cambiumnetorks.com to /etc/hosts"
+fi

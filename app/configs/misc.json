@@ -1,0 +1,5 @@
+{
+  "port"  : 3003,
+  "cache" : true,
+  "optimize"  : <%= optimize %>
+}

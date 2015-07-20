@@ -1,0 +1,15 @@
+mixin postListHeading(postListHeading)
+    if postListHeading.headerImage || postListHeading.subtitle || postListHeading.shortDescription || postListHeading.fullDescription
+        .row   
+            .col-md-12
+                if postListHeading.headerImage
+                    p
+                        img(src="/assets/#{postListHeading.headerImage}")
+                if postListHeading.subtitle
+                    h2!= postListHeading.subtitle
+                if postListHeading.shortDescription
+                    p.lead!= postListHeading.shortDescription
+                if postListHeading.fullDescription
+                    a.show-content.btn.btn-default(href='#') Read More
+                    .hide-content!= postListHeading.fullDescription
+        hr

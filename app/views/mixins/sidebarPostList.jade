@@ -1,0 +1,14 @@
+mixin sidebarPostList(posts)
+    ul.simple-post-list
+        each post in posts
+            li
+                if post.fields.listImages
+                    .post-image
+                        .img-thumbnail
+                            a(href='/blog/#{post.fields.slug}')
+                                img(src='/assets#{post.fields.listImages[0]}', alt='#{post.fields.title}')
+                .post-info
+                    a(href='/blog/#{post.fields.slug}')!= post.fields.title
+                    .post-meta
+                        - var localeDateString = post.fields.editorialWindow.validFrom.toLocaleDateString('en-US')
+                        != localeDateString.slice(localeDateString.indexOf('day') + 5)

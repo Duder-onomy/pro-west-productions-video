@@ -1,0 +1,7 @@
+mixin personalRecommendation(recommendation)
+    div
+        blockquote
+            p
+                i.fa.fa-quote-left
+                != recommendation.quote
+            span - #{recommendation.name}, #{recommendation.jobTitle} #{recommendation.company}

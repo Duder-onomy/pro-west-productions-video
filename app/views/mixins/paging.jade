@@ -1,0 +1,15 @@
+mixin paging(totalPages, currentPageNumber, feed, filterUrlString)
+    if totalPages > 1
+        div
+            ul.pagination.pagination-lg.pull-right
+                - var paginationUrl = '/' + feed + '/' + filterUrlString + 'page'
+                li
+                    - var previousPageNumber = currentPageNumber > 1 ? currentPageNumber - 1 : currentPageNumber
+                    a(href='#{paginationUrl}/#{previousPageNumber}') «
+                - var i = 1
+                while i <= totalPages
+                    li(class='#{i === currentPageNumber ? "active" : ""}')
+                        a(href='#{paginationUrl}/#{i}')!= i++
+                li
+                    - var nextPageNumber = currentPageNumber < totalPages ? currentPageNumber + 1 : currentPageNumber
+                    a(href='#{paginationUrl}/#{nextPageNumber}') »
