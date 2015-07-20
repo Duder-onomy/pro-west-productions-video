@@ -1,0 +1,9 @@
+---
+node:
+  nodesource_pin_priority: 500
+  port_to_listen_on: 3003
+mongo:
+  user: some-user
+  password: some-password
+project_name: some-project
+project_group_name: some-group

@@ -1,0 +1,23 @@
+---
+
+- name: Add git deploy key
+  copy: src={{ item }} dest=/home/{{ ansible_ssh_user }}/.ssh mode=u=rw
+  with_items:
+    - id_rsa
+    - id_rsa.pub
+
+- name: Clone repo
+  shell: git clone --branch deploy/staging --single-branch git@git.thinksolid.com:{{ project_group_name }}/{{ project_name }}.git
+  args:
+    chdir:  /home/{{ ansible_ssh_user }}/
+    creates: /home/{{ ansible_ssh_user }}/{{ project_name }}/
+  sudo: no
+
+- name: Add post update hook
+  template: src=post-update dest=/home/{{ ansible_ssh_user }}/{{ project_name }}/.git/hooks/post-update mode=u=rwx,g=xr,o=x
+  sudo: no
+
+- name: Allow push to deploy
+  shell: git config receive.denyCurrentBranch updateInstead
+  args:
+    chdir: /home/{{ ansible_ssh_user }}/{{ project_name }}

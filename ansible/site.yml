@@ -1,0 +1,11 @@
+---
+- name: Environment Setup
+  hosts: all
+  sudo: yes
+  roles:
+    - essentials
+
+    - grasshopper
+    - mongo
+    - nginx
+    - node

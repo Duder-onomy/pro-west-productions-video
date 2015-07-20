@@ -1,0 +1,9 @@
+---
+
+- name: Add pm2
+  npm: name=pm2 global=yes
+  sudo: no
+
+- name: Add pm2 config file
+  template: src=processes.json dest=/home/{{ ansible_ssh_user }}/processes.json
+  sudo: no

@@ -1,0 +1,29 @@
+---
+
+- name: Import the NodeSource GPG key into apt
+  apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key state=present
+
+- name: Add NodeSource deb repository
+  apt_repository: repo='deb https://deb.nodesource.com/node {{ ansible_distribution_release }} main' state=present
+
+- name: Add NodeSource deb-src repository
+  apt_repository: repo='deb-src https://deb.nodesource.com/node {{ ansible_distribution_release }} main' state=present
+
+- name: Add NodeSource repository preferences
+  template:
+    src: deb_nodesource_com_node.pref
+    dest: /etc/apt/preferences.d/deb_nodesource_com_node.pref
+
+- name: Install Node.js
+  apt: pkg=nodejs state=installed update_cache=yes
+
+- name: Create .npm-packages
+  file: path=/home/{{ ansible_ssh_user }}/.npm-packages state=directory
+  sudo: no
+
+- name: Set place for global npms
+  shell: npm config set prefix '/home/{{ ansible_ssh_user }}/.npm-packages'
+  sudo: no
+
+- name: Add it to your paths
+  shell: echo 'export PATH="$PATH:$HOME/.npm-packages/bin"' >> /home/{{ ansible_ssh_user }}/.zshrc

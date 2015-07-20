@@ -1,0 +1,13 @@
+{
+  "apps" : [
+    {
+      "name"        : "{{ project_name }}",
+      "script"      : "index.js",
+      "merge_logs"  : true,
+      "cwd"         : "/home/{{ ansible_ssh_user }}/{{ project_name }}",
+      "env": {
+        "NODE_ENV": "{{ node.env }}"
+      }
+    }
+  ]
+}

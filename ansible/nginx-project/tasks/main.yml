@@ -1,0 +1,9 @@
+---
+
+- name: Copy site config
+  template: src=project.conf dest=/etc/nginx/sites-available/{{ project_name }}.conf
+
+- name: Link to sites enabled
+  file: src=/etc/nginx/sites-available/{{ project_name }}.conf dest=/etc/nginx/sites-enabled/{{ project_name }}.conf state=link
+  notify:
+    - Reload Nginx

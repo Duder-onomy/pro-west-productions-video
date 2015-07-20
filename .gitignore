@@ -1,0 +1,15 @@
+.idea/
+/build/
+/node_modules/
+/.vagrant/
+/.sass_cache/
+/app/public/vendor/
+/app/public/optimized/
+/app/cache/
+/tmp/
+/public/
+.DS_Store
+/app/tmp/*.js
+/app/tmp/*.css
+/app/tmp/*.tmp
+*.tmp

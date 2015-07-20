@@ -1,0 +1,18 @@
+---
+- name: Confirm needed grasshopper tmp directories exist
+  file: path=/home/{{ ansible_ssh_user }}/tmp state=directory
+
+- name: create grasshopper mongo user
+  mongodb_user: database=cambium roles=dbAdmin name={{ mongo.user }} password={{ mongo.password }}
+
+- name: create tempdirectory
+  file: path=/home/{{ ansible_ssh_user }}/tmp state=directory
+  sudo: no
+
+- name: create grasshopper logs directory
+  file: path=/home/{{ ansible_ssh_user }}/logs state=directory
+  sudo: no
+
+- name: create grasshopper log file
+  file: path=/home/{{ ansible_ssh_user }}/logs/grasshopper.log state=touch
+  sudo: no
