@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
-cd /home/{{ ansible_ssh_user }}/cambium && /home/{{ ansible_ssh_user }}/.npm-packages/bin/bower install
+cd /home/{{ ansible_ssh_user }}/{{ project_name }} && /home/{{ ansible_ssh_user }}/.npm-packages/bin/bower install
 /usr/bin/npm install --production
 
-CAMBIUM_STARTED=$(pm2 list | grep cambium)
+PROJECT_STARTED=$(pm2 list | grep {{ project_name }})
 
-echo "cambium started: $CAMBIUM_STARTED"
+echo "{{ project_name }} started: $PROJECT_STARTED"
 
-if [ -z "$CAMBIUM_STARTED" ]
+if [ -z "$PROJECT_STARTED" ]
 then
     /usr/bin/pm2 start /home/{{ ansible_ssh_user }}/processes.json
     /usr/bin/pm2 save
 else
-    /usr/bin/pm2 restart cambium
+    /usr/bin/pm2 restart {{ project_name }}
 fi

@@ -66,20 +66,28 @@ module.exports = function (grunt) {
                 replacements: [
                     {
                         from: 'vagrant',
-                        to: 'ts'
+                        to: 'ubuntu'
                     },
                     {
                         from : '"dev"',
                         to : '"staging"'
                     },
                     {
-                        from: 'cambium/app',
-                        to: 'cambium'
+                        from: 'gh_web/app',
+                        to: 'gh_web'
                     }
                 ]
             }
         }
     });
 
-    grunt.registerTask('deploy', ['prompt:deploy', 'copy:app', 'copy:pkg', 'copy:bower', 'replace:configs', 'buildGhPages:deploy', 'shell:deploy'])
+    grunt.registerTask('deploy', [
+        'prompt:deploy',
+        'copy:app',
+        'copy:pkg',
+        'copy:bower',
+        'replace:configs',
+        'buildGhPages:deploy',
+        'shell:deploy'
+    ]);
 };

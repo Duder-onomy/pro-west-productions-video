@@ -4,8 +4,6 @@
 NODE_ENV="local-remote"
 DEBUG=""
 NODE_DEBUG=""
-WAIT=10
-DEBUG_WAIT=20
 
     while test $# -gt 0; do
         case "$1" in
@@ -23,7 +21,6 @@ DEBUG_WAIT=20
                 ;;
             -d|--debug)
                 shift
-                WAIT="$DEBUG_WAIT"
                 DEBUG="debug"
                 ;;
             -n|node-debug)
@@ -39,12 +36,9 @@ DEBUG_WAIT=20
 
 bower install
 echo "openning ssh tunnel to remote data"
-echo "$WAIT seconds to connect mongo"
 echo "if you want nodemon to work, open a new tab and run, './bin/keepAlive -l'"
-# https://gist.github.com/scy/6781836
-ssh -f -o ExitOnForwardFailure=yes -L 27018:localhost:27017 ts@staging-ssh.cambiumnetworks.com sleep "$WAIT"
-
-
+echo "openning ssh tunnel to remote data - will close on script exit"
+(ssh -N -L 27018:localhost:27017 -M -S /tmp/ssh_tunnel_27018_%h.sock $SSH_HOST)&
 
 if [ -z "$DEBUG" ]
 then
@@ -61,3 +55,10 @@ else
         NODE_ENV="$NODE_ENV" node --debug app
     fi
 fi
+
+function finish {
+    echo "closing ssh tunnels"
+    ssh -S /tmp/ssh_tunnel_27018_%h.sock -O exit $SSH_HOST
+}
+
+trap finish EXIT

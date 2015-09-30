@@ -1,3 +1,0 @@
-#!/bin/bash
-
-vagrant exec "kill -9 $(lsof -t -i:3001)"

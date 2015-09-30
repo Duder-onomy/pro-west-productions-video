@@ -1,10 +1,9 @@
 {
-  "assets"        : "/home/vagrant/cambium/app/public/assets",
-  "baseAssetsUrl" : "http://staging.cambiumnetworks.com",
-  "homeDirectory" : "/home/vagrant",
-  "dbEndpoint"    : "mongodb://127.0.0.1:27018/cambium",
-  "dbHost"        : "127.0.0.1:27018/cambium",
+  "assets"        : "",
+  "baseAssetsUrl" : "http://grasshopper.thinksolid.ccom",
+  "homeDirectory" : "",
+  "dbEndpoint"    : "mongodb://127.0.0.1:27018/gh_web",
+  "dbHost"        : "127.0.0.1:27018/gh_web",
   "debug"         : true,
   "optimize"      : false,
-  "commentsForum" : "cambium-staging"
 }

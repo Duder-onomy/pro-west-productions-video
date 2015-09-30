@@ -3,7 +3,7 @@
   file: path=/home/{{ ansible_ssh_user }}/tmp state=directory
 
 - name: create grasshopper mongo user
-  mongodb_user: database=cambium roles=dbAdmin name={{ mongo.user }} password={{ mongo.password }}
+  mongodb_user: database={{ project_name }} roles=dbAdmin name={{ mongo.user }} password={{ mongo.password }}
 
 - name: create tempdirectory
   file: path=/home/{{ ansible_ssh_user }}/tmp state=directory

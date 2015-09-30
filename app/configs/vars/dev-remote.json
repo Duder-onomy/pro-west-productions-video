@@ -1,9 +1,0 @@
-{
-  "assets"        : "/home/vagrant/cambium/app/public/assets",
-  "baseAssetsUrl" : "http://staging.cambiumnetworks.com",
-  "homeDirectory" : "/home/vagrant",
-  "dbEndpoint"    : "mongodb://127.0.0.1:27018/project_name",
-  "dbHost"        : "127.0.0.1:27018/project_name",
-  "debug"         : true,
-  "optimize"      : false
-}

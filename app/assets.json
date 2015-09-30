@@ -1,6 +1,6 @@
 {
   "css" : {
-    "cambium" : [
+    "gh_web" : [
       "/css/theme.css",
       "/css/theme-elements.css",
       "/css/theme-blog.css",
@@ -15,7 +15,7 @@
     ]
   },
   "js" : {
-    "cambium" : [
+    "gh_web" : [
       "/js/theme.js",
       "/js/custom.js",
       "/js/theme.init.js",
