@@ -7,10 +7,11 @@
     - id_rsa.pub
 
 - name: Clone repo
-  shell: git clone --branch deploy/staging --single-branch git@git.thinksolid.com:{{ project_group_name }}/{{ project_name }}.git
+  git: repo=git@git.thinksolid.com:{{ project_group_name }}/{{ project_name }}.git
   args:
-    chdir:  /home/{{ ansible_ssh_user }}/
-    creates: /home/{{ ansible_ssh_user }}/{{ project_name }}/
+    accept_hostkey: yes
+    version: '{{ git.branch }}'
+    dest:  /home/{{ ansible_ssh_user }}/{{ project_name }}
   sudo: no
 
 - name: Add post update hook
