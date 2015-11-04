@@ -1,11 +1,22 @@
 ---
+- hosts: vagrant
+  sudo: yes
+  roles:
+    - vagrant-project
+
 - name: Environment Setup
   hosts: all
   sudo: yes
   roles:
     - essentials
-
+    - oh-my-zsh
+    - hostname
     - grasshopper
     - mongo
-    - nginx
-    - node
+    - nginx-project
+    - node-project
+
+- hosts: staging
+  sudo: yes
+  roles:
+    - git-project

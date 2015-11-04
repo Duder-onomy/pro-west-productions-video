@@ -1,7 +1,9 @@
 ---
 ansible_ssh_user: ubuntu
 nginx:
-  host_to_listen_on: sample.thinksolid.com
+  host_to_listen_on: desirelist.thinksolid.com
 node:
-  nodesource_pin_priority: 500
   env: staging
+  port_to_listen_on: 3008
+git:
+  branch: deploy/staging

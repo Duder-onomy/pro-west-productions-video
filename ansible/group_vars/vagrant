@@ -1,6 +1,7 @@
 ---
 ansible_ssh_user: vagrant
 nginx:
-  host_to_listen_on: dev.sample.com
+  host_to_listen_on: desirelist.dev
 node:
-  nodesource_pin_priority: 500
+  env: dev
+  port_to_listen_on: 3008

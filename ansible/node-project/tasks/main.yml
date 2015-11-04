@@ -1,9 +1,17 @@
 ---
-
+# npm ansible command is difficult to use with nvm so just shell it:
 - name: Add pm2
-  npm: name=pm2 global=yes
+  shell: source ~/.zshrc && npm install -g pm2
   sudo: no
+  args:
+    executable: /bin/zsh
 
 - name: Add pm2 config file
   template: src=processes.json dest=/home/{{ ansible_ssh_user }}/processes.json
   sudo: no
+
+- name: Create startups for pm2
+  shell: source ~/.zshrc && sudo su -c "env PATH=$PATH:/home/{{ ansible_ssh_user }}/.nvm/versions/node/{{ nvm.version }}/bin pm2 startup linux -u ubuntu --hp /home/ubuntu"
+  sudo: no
+  args:
+    executable: /bin/zsh

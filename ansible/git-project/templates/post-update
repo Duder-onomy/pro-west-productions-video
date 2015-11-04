@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
-cd /home/{{ ansible_ssh_user }}/{{ project_name }} && /home/{{ ansible_ssh_user }}/.npm-packages/bin/bower install
-/usr/bin/npm install --production
+# source ~/.zshrc
+. /home/{{ ansible_ssh_user }}/.zshrc
+
+cd /home/{{ ansible_ssh_user }}/{{ project_name }} && bower install
+npm install --production
 
 PROJECT_STARTED=$(pm2 list | grep {{ project_name }})
 
@@ -9,8 +12,8 @@ echo "{{ project_name }} started: $PROJECT_STARTED"
 
 if [ -z "$PROJECT_STARTED" ]
 then
-    /usr/bin/pm2 start /home/{{ ansible_ssh_user }}/processes.json
-    /usr/bin/pm2 save
+    pm2 start /home/{{ ansible_ssh_user }}/processes.json
+    pm2 save
 else
-    /usr/bin/pm2 restart {{ project_name }}
+    pm2 restart {{ project_name }}
 fi

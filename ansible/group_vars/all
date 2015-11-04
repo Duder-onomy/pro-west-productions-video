@@ -1,9 +1,9 @@
 ---
-node:
-  nodesource_pin_priority: 500
-  port_to_listen_on: 3003
 mongo:
-  user: some-user
-  password: some-password
-project_name: some-project
-project_group_name: some-group
+  user: dl-user
+  password: lkjEJ38_jjIHGHDNkmn87_
+project_name: desirelist-web-app
+project_group_name: desirelist
+nvm:
+  version: v0.29.0
+  node_version: v0.12.7

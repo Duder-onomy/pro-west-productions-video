@@ -1,13 +1,31 @@
 'use strict';
 
-//process.env.UV_THREADPOOL_SIZE=64;
-
 require('ral').basePath = __dirname;
+require('bluebird').longStackTraces();
 
-var simpleton   = require('expressively');
+var expressively        = require('expressively'),
+    express             = require('express'),
+    app                 = express(),
+    path                = require('path'),
+    nodeSassMiddleware  = require('node-sass-middleware'),
+    autoprefixer        = require('express-autoprefixer');
 
-simpleton
+// These two middleware have to be loaded before the static middleware, so we do it up stream from expressively
+app.use('/styles', nodeSassMiddleware({
+    src : path.join(__dirname, 'styles'),
+    dest : path.join(__dirname, 'public', 'styles'),
+    debug : true,
+    outputStyle : 'compressed',
+    error : function(error) { console.log('error', error); }
+}));
+
+// You have to refresh the page once for prefixer to work, since sass has to write the file first.
+app.use('/styles', autoprefixer({ browsers : 'last 2 versions', cascade : false }));
+
+expressively
     .start({
+        express         : express,
+        app             : app,
         baseDirectory   : __dirname,
         verbose         : true
     })

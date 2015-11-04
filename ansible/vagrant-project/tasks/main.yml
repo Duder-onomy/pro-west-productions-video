@@ -1,0 +1,8 @@
+---
+- name: Symlink the project
+  file: path=/home/vagrant/desirelist-web-app
+      src=/vagrant
+      state=link
+      force=yes
+- name: Create log location
+  shell: mkdir /home/vagrant/logs && chown -R vagrant:vagrant /home/vagrant/logs

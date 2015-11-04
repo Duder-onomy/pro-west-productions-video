@@ -4,7 +4,7 @@
       "name"        : "{{ project_name }}",
       "script"      : "index.js",
       "merge_logs"  : true,
-      "cwd"         : "/home/{{ ansible_ssh_user }}/{{ project_name }}",
+      "cwd"         : "/home/{{ ansible_ssh_user }}/{{ project_name }}/app",
       "env": {
         "NODE_ENV": "{{ node.env }}"
       }
