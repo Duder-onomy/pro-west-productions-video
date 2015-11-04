@@ -1,0 +1,47 @@
+{
+  "name": "some_project",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app/index.js",
+  "dependencies": {
+    "bluebird": "^2.9.26",
+    "bridgetown-api": "^2.1.0",
+    "compression": "^1.4.4",
+    "deep-empty": "^0.1.4",
+    "expressively": "0.3.0",
+    "findup-sync": "^0.2.1",
+    "grasshopper-api": "^0.16.20",
+    "lodash": "^3.9.3",
+    "memoize-clear": "0.0.0",
+    "node-sass-middleware": "^0.8.0",
+    "on-headers": "^1.0.0",
+    "ral": "^1.1.1",
+    "request": "^2.58.0",
+    "solid-logger-js": "^0.4.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.thinksolid.com:solid/grasshopper-base-project.git"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-build-gh-pages": "^1.0.4",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "^0.8.0",
+    "grasshopper-admin": "0.29.33",
+    "grunt-prompt": "^1.3.0",
+    "grunt-shell": "^1.1.2",
+    "grunt-text-replace": "^0.4.0",
+    "matchdep": "^0.3.0",
+    "pre-commit": "^1.0.10"
+  },
+  "scripts": {
+    "start": "node app",
+    "jshint": "(command -v jshint >/dev/null 2>&1) || npm install -g jshint; jshint app/ --exclude-path .jshintignore"
+  },
+  "author": "SOLID Interactive",
+  "license": "copyright",
+  "pre-commit": [
+    "jshint"
+  ]
+}
